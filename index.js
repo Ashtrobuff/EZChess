@@ -41,7 +41,7 @@ io.on( "connection", ( socket ) => {
     });
     socket.on('new_msg',(message)=>{
         console.log(message)
-        io.to(currentCode).emit("msg-received",message);
+        io.to(currentCode).emit("msg-received",{message:message,sender:socket.id});
     })
     socket.on('disconnect', function() {
         console.log('socket disconnected');
