@@ -172,7 +172,12 @@ function createMessageElement(messageText, username, postTime) {
 
   // Append msg-box to article
   article.appendChild(msgBox);
-
+if(username==socket.id){
+  article.classList.add('msg-self')
+ }
+ else{
+  article.classList.add('msg-remote')
+ }
   return article;
 }
 
@@ -191,7 +196,7 @@ socket.on('msg-received', function(message) {
   console.log(messages)
   const list = document.querySelector('.chat-window');
   const messageContainer = document.getElementById('message-container');
-  let newmsg=createMessageElement(message,'buga','4 minutes ago')
+  let newmsg=createMessageElement(message.message,message.sender,'4 minutes ago')
       list.appendChild(newmsg)
  });
 updateStatus()
