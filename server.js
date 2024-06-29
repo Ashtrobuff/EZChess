@@ -24,10 +24,6 @@ io.on( "connection", ( socket ) => {
     let currentCode = '';
     console.log("a user connected");
     console.log(socket.id);
-    socket.on("new_msg",({message,room})=>{
-        console.log({message:message,room:room})
-        io.to(room).emit("msg-received",message);
-    })
     socket.on('joinGame',(data)=>{ 
         currentCode = data.code;
         socket.join(currentCode);
@@ -36,7 +32,6 @@ io.on( "connection", ( socket ) => {
             games[currentCode] = true;
             return;
         }
-        
         io.to(currentCode).emit('startGame');
     })
     socket.on('move', function(move) {
@@ -44,6 +39,10 @@ io.on( "connection", ( socket ) => {
 
         io.to(currentCode).emit('newMove', move);
     });
+    socket.on('new_msg',(message)=>{
+        console.log(message)
+        io.to(currentCode).emit("msg-received",message);
+    })
     socket.on('disconnect', function() {
         console.log('socket disconnected');
     
@@ -61,6 +60,11 @@ app.get('/', (req, res) => {
     })
 });
 
+app.get('/chat', (req, res) => {
+    res.render('chat',{
+        color:"black"
+    })
+});
 
 app.get('/white', (req, res) => {
     res.render('outer',{
