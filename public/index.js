@@ -12,9 +12,13 @@ function onDragStart (source, piece, position, orientation) {
   if(gameover) return false;
   if (game.game_over()) return false
 
+  if ((game.turn() === 'w'&& window.location.pathname.includes('black')==true) ||
+  (game.turn() === 'b' &&  window.location.pathname.includes("white")==true)) {
+return false
+}
   // only pick up pieces for the side to move
-  if ((game.turn() === 'w' && piece.search(/^b/) !== -1) ||
-      (game.turn() === 'b' && piece.search(/^w/) !== -1)) {
+  if ((game.turn() === 'w' && piece.search(/^b/) !== -1 && window.location.pathname.includes('black')==true) ||
+      (game.turn() === 'b' && piece.search(/^w/) !== -1 &&  window.location.pathname.includes("white")==true)) {
     return false
   }
 }

@@ -14,11 +14,12 @@
     flex-direction: column;
     overflow: hidden;
     box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+
 }
 .chat-window {
     flex: auto;
     max-height: calc(100% - 60px);
-    background: #2f323b;
+    background: #fff;
     overflow: auto;
     padding: 10px;
 }
@@ -35,11 +36,11 @@
     outline: 0 none;
     border: none;
     width: calc(100% - 60px);
-    color: white;
+    color:#000;
     text-indent: 10px;
     font-size: 12pt;
     padding: 0;
-    background: #40434e;
+    background:#fff;
 }
 .chat-input button {
     float: right;

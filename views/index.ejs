@@ -4,26 +4,51 @@
         <link rel="stylesheet" href="outer.css" type="text/css">
     </head>
     <body id="indexer">
-        <h2>Game code</h2>
-        <input type="text" id="codeInput">
-        <div ontouchstart="">
-            <button id="createGame" class="button"><a href="#">Create Game</a></button>
+        <div class="out-container">
+            <div><img height="400px" width="400px" src="logo1.png"/></div>
+            <div style="width: 100%;     align-items: center; justify-content: center; flex-direction: column;">
+        <div><h1 style="text-align: center;">Enter game code</h1></div>
+        <div><h4 style="text-align: center;">simply enter any code to create a new sessio,or join one!</h4></div>
+        <div style=" display:flex; align-items:center; justify-content: center;">
+            <input type="text" id="codeInput" required="true">
         </div>
-        <div ontouchstart="">  <button id="joinGame" class="button"><a href="#">Join Game</a></button></div>
-      
+        
+    </div>
+        <div class="butcontainer">
+            <div ontouchstart="">
+                <div id="createGame" class="button"><a href="#">Create Game</a></div>
+            </div>
+            <div ontouchstart="">  <div id="joinGame" class="button"><a href="#">Join Game</a></div></div>
+        </div>
+        
         <div style="color: red" id="errorMessage"></div>
-
+    </div>
         <script>
+              
         $(document).ready(function() {
+            var input1=$("#codeInput").val()
             $('#createGame').on('click', function() {
+                if ($("#codeInput").val().length<1){
+                    $('#errorMessage').text("Please enter a code")
+                    
+                }else if($("#codeInput").val()!=''){
                 console.log('Clicked Create game button');
                 window.location.replace('/white?code=' + encodeURIComponent($('#codeInput').val()));
+                }
             });
 
             $('#joinGame').on('click', function() {
-                console.log('Clicked Join game button');
+               
+                if ($("#codeInput").val().length<1){
+                    $('#errorMessage').text("Please enter a code")
+                    
+                }else if($("#codeInput").val()!=''){
+                console.log('Clicked Create game button');
                 window.location.replace('/black?code=' + encodeURIComponent($('#codeInput').val()));
-            });
+                }
+                }
+                
+            );
             var urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('error') == 'invalidCode') {
                 $('#errorMessage').text('Invalid invite code');

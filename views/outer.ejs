@@ -5,21 +5,40 @@
 <link rel="stylesheet" href="outer.css" type="text/css">
 <link rel="stylesheet" href="chat.css">
 </head>
-<script></script>
+<script>
+    function copyfen(){
+  var copyText = document.getElementById("fen").innerText
+// Select the text field
+var elem = document.createElement("textarea");
+    document.body.appendChild(elem);
+    elem.value = copyText;
+    elem.select();
+    document.execCommand("copy");
+    document.body.removeChild(elem);
+// Alert the copied text
+alert("Copied the text: " + copyText);
+  }
+
+// Alert the copied text
+  
+</script>
 <body id="body">
-    <div>
-  playing as <%=color%>
+    <div class="rootbox">
+    <div class="outer-outer" style="">
+  <div style="margin-bottom: 10px;">playing as <%=color%></div>
+  <div id="boardandpanel">
     <div id="board1" style="width: 400px"></div>
     <label>Status:</label>
+    <div class="bottom-panel">
 <div id="status"></div>
-<label>FEN:</label>
-<div id="fen"></div>
-<label>PGN:</label>
+<div class="fen" onclick="copyfen()">copy FEN</div>
+<p id="fen"></p>
 <div id="pgn"></div>
-
 </div>
-<div>
-<section class="chatbox">
+</div>
+</div>
+<div class="meter">
+<div class="chatbox" style="background-color: purple;">
     <section class="chat-window">
       
     </section>
@@ -78,11 +97,14 @@ fill="#fff" stroke="none">
 
             </button>
     </form>
-</section>
+</div>
+</div>
 </div>
 <script> 
 let playercolor='<%=color%>';
-    console.log("playing as"+playercolor)</script>
+
+    console.log("playing as"+playercolor)
+    </script>
     <script src="index.js"></script>
 
 
