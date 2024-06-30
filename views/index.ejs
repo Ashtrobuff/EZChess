@@ -34,6 +34,9 @@
                 }else if($("#codeInput").val()!=''){
                 console.log('Clicked Create game button');
                 window.location.replace('/white?code=' + encodeURIComponent($('#codeInput').val()));
+                if (urlParams.get('error') == 'invalidCode') {
+                $('#errorMessage').text('Invalid invite code');
+            }
                 }
             });
 
@@ -45,6 +48,9 @@
                 }else if($("#codeInput").val()!=''){
                 console.log('Clicked Create game button');
                 window.location.replace('/black?code=' + encodeURIComponent($('#codeInput').val()));
+                if (urlParams.get('error') == 'invalidCode') {
+                $('#errorMessage').text('Invalid invite code');
+            }
                 }
                 }
                 
@@ -52,6 +58,9 @@
             var urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('error') == 'invalidCode') {
                 $('#errorMessage').text('Invalid invite code');
+            }
+            if (urlParams.get('error') =='nocode') {
+                $('#errorMessage').text('room not available');
             }
         });
         </script>

@@ -6,6 +6,11 @@ var $fen = $('#fen')
 var $pgn = $('#pgn')
 var messages=[];
 var urlParams = new URLSearchParams(window.location.search);
+window.onload=function putcode(){
+  var code = urlParams.get('code');
+  var coder=document.getElementById("coder")
+  coder.innerText="room code is :"+code
+}
 let gameover=false;
 function onDragStart (source, piece, position, orientation) {
   if(!gamehasStarted) return false;

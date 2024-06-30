@@ -67,6 +67,9 @@ app.get('/chat', (req, res) => {
 });
 
 app.get('/white', (req, res) => {
+    if (games[req.query.code]) {
+        return res.redirect('/?error=nocode');
+    }
     res.render('outer',{
         color:'white'
     })
