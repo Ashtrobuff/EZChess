@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <%-include ('head.ejs') %>
-<link rel="stylesheet" href="outer.css" type="text/css">
+<link rel="stylesheet" href="outer.css">
 <link rel="stylesheet" href="chat.css">
 </head>
 <script>
@@ -22,6 +22,19 @@ alert("Copied the text: " + copyText);
 // Alert the copied text
   
 </script>
+<style>
+    @media  screen and (max-width:355px){
+  .rootbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    gap:30px;
+  }
+}
+</style>
 <body id="body">
     <div class="rootbox">
     <div class="outer-outer" style="">
